@@ -1,0 +1,571 @@
+{
+  "disease_key": "heart",
+  "title": "Heart disease",
+  "selected_model": "Logistic Regression",
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "target_counts": {
+    "0": 164,
+    "1": 139
+  },
+  "data_quality": {
+    "dataset_key": "heart",
+    "source_records": 303,
+    "records_after_target_cleaning": 303,
+    "exact_duplicate_rows_detected": 0,
+    "exact_duplicates_removed": 0,
+    "modeling_records": 303,
+    "features": [
+      "age",
+      "sex",
+      "cp",
+      "trestbps",
+      "chol",
+      "fbs",
+      "restecg",
+      "thalach",
+      "exang",
+      "oldpeak",
+      "slope",
+      "ca",
+      "thal"
+    ],
+    "feature_types": {
+      "age": "int64",
+      "sex": "object",
+      "cp": "object",
+      "trestbps": "int64",
+      "chol": "int64",
+      "fbs": "object",
+      "restecg": "object",
+      "thalach": "int64",
+      "exang": "object",
+      "oldpeak": "float64",
+      "slope": "object",
+      "ca": "object",
+      "thal": "object"
+    },
+    "missing_by_feature": {
+      "age": 0,
+      "sex": 0,
+      "cp": 0,
+      "trestbps": 0,
+      "chol": 0,
+      "fbs": 0,
+      "restecg": 0,
+      "thalach": 0,
+      "exang": 0,
+      "oldpeak": 0,
+      "slope": 0,
+      "ca": 4,
+      "thal": 2
+    },
+    "target_counts": {
+      "0": 164,
+      "1": 139
+    },
+    "outlier_iqr_counts": {
+      "age": 0,
+      "trestbps": 9,
+      "chol": 5,
+      "thalach": 1,
+      "oldpeak": 5
+    },
+    "train_records": 242,
+    "test_records": 61
+  },
+  "eda": {
+    "shape": [
+      303,
+      13
+    ],
+    "dtypes": {
+      "age": "int64",
+      "sex": "object",
+      "cp": "object",
+      "trestbps": "int64",
+      "chol": "int64",
+      "fbs": "object",
+      "restecg": "object",
+      "thalach": "int64",
+      "exang": "object",
+      "oldpeak": "float64",
+      "slope": "object",
+      "ca": "object",
+      "thal": "object"
+    },
+    "describe": {
+      "age": {
+        "count": 303.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 54.43894389438944,
+        "std": 9.038662442446746,
+        "min": 29.0,
+        "25%": 48.0,
+        "50%": 56.0,
+        "75%": 61.0,
+        "max": 77.0
+      },
+      "sex": {
+        "count": 303,
+        "unique": 2,
+        "top": "1",
+        "freq": 206,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "cp": {
+        "count": 303,
+        "unique": 4,
+        "top": "4",
+        "freq": 144,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "trestbps": {
+        "count": 303.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 131.68976897689768,
+        "std": 17.59974772958769,
+        "min": 94.0,
+        "25%": 120.0,
+        "50%": 130.0,
+        "75%": 140.0,
+        "max": 200.0
+      },
+      "chol": {
+        "count": 303.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 246.69306930693068,
+        "std": 51.77691754263704,
+        "min": 126.0,
+        "25%": 211.0,
+        "50%": 241.0,
+        "75%": 275.0,
+        "max": 564.0
+      },
+      "fbs": {
+        "count": 303,
+        "unique": 2,
+        "top": "0",
+        "freq": 258,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "restecg": {
+        "count": 303,
+        "unique": 3,
+        "top": "0",
+        "freq": 151,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "thalach": {
+        "count": 303.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 149.6072607260726,
+        "std": 22.875003276980376,
+        "min": 71.0,
+        "25%": 133.5,
+        "50%": 153.0,
+        "75%": 166.0,
+        "max": 202.0
+      },
+      "exang": {
+        "count": 303,
+        "unique": 2,
+        "top": "0",
+        "freq": 204,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "oldpeak": {
+        "count": 303.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 1.0396039603960396,
+        "std": 1.1610750220686348,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.8,
+        "75%": 1.6,
+        "max": 6.2
+      },
+      "slope": {
+        "count": 303,
+        "unique": 3,
+        "top": "1",
+        "freq": 142,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "ca": {
+        "count": 299,
+        "unique": 4,
+        "top": "0.0",
+        "freq": 176,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "thal": {
+        "count": 301,
+        "unique": 3,
+        "top": "3.0",
+        "freq": 166,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      }
+    },
+    "target_counts": {
+      "0": 164,
+      "1": 139
+    },
+    "missing_counts": {
+      "age": 0,
+      "sex": 0,
+      "cp": 0,
+      "trestbps": 0,
+      "chol": 0,
+      "fbs": 0,
+      "restecg": 0,
+      "thalach": 0,
+      "exang": 0,
+      "oldpeak": 0,
+      "slope": 0,
+      "ca": 4,
+      "thal": 2
+    },
+    "class_imbalance_ratio": 1.1798561151079137
+  },
+  "holdout_metrics": {
+    "accuracy": 0.8852459016393442,
+    "precision": 0.8888888888888888,
+    "recall_sensitivity": 0.8571428571428571,
+    "specificity": 0.9090909090909091,
+    "f1": 0.8727272727272727,
+    "roc_auc": 0.9188311688311689,
+    "average_precision": 0.8943698838766504,
+    "brier_score": 0.10732682486871725,
+    "confusion_matrix": [
+      [
+        30,
+        3
+      ],
+      [
+        4,
+        24
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.8823529411764706,
+        "recall": 0.9090909090909091,
+        "f1-score": 0.8955223880597015,
+        "support": 33.0
+      },
+      "1": {
+        "precision": 0.8888888888888888,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.8727272727272727,
+        "support": 28.0
+      },
+      "accuracy": 0.8852459016393442,
+      "macro avg": {
+        "precision": 0.8856209150326797,
+        "recall": 0.8831168831168831,
+        "f1-score": 0.8841248303934871,
+        "support": 61.0
+      },
+      "weighted avg": {
+        "precision": 0.8853530483231543,
+        "recall": 0.8852459016393442,
+        "f1-score": 0.8850590564317014,
+        "support": 61.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "ca",
+        "mean_absolute_shap": 0.15684533436560866
+      },
+      {
+        "feature": "cp",
+        "mean_absolute_shap": 0.13939476134626724
+      },
+      {
+        "feature": "thal",
+        "mean_absolute_shap": 0.08706308697297195
+      },
+      {
+        "feature": "sex",
+        "mean_absolute_shap": 0.08580455523815027
+      },
+      {
+        "feature": "slope",
+        "mean_absolute_shap": 0.0720515258855503
+      },
+      {
+        "feature": "oldpeak",
+        "mean_absolute_shap": 0.048446670449541485
+      },
+      {
+        "feature": "trestbps",
+        "mean_absolute_shap": 0.03737888580585239
+      },
+      {
+        "feature": "exang",
+        "mean_absolute_shap": 0.033082541743540576
+      },
+      {
+        "feature": "thalach",
+        "mean_absolute_shap": 0.02738127055271784
+      },
+      {
+        "feature": "chol",
+        "mean_absolute_shap": 0.020176516499240155
+      },
+      {
+        "feature": "restecg",
+        "mean_absolute_shap": 0.013441631884240276
+      },
+      {
+        "feature": "fbs",
+        "mean_absolute_shap": 0.00914101419778317
+      },
+      {
+        "feature": "age",
+        "mean_absolute_shap": 0.0019935726814113226
+      }
+    ]
+  },
+  "model_comparison": [
+    {
+      "model": "Logistic Regression",
+      "cv_recall_sensitivity": 0.8110671936758893,
+      "cv_precision": 0.8202070393374742,
+      "cv_f1": 0.8140853791323857,
+      "cv_roc_auc": 0.9132061979888066,
+      "test_accuracy": 0.8852459016393442,
+      "test_precision": 0.8888888888888888,
+      "test_recall_sensitivity": 0.8571428571428571,
+      "test_specificity": 0.9090909090909091,
+      "test_f1": 0.8727272727272727,
+      "test_roc_auc": 0.9188311688311689,
+      "test_average_precision": 0.8943698838766504,
+      "test_brier_score": 0.10732682486871725,
+      "test_confusion_matrix": [
+        [
+          30,
+          3
+        ],
+        [
+          4,
+          24
+        ]
+      ],
+      "best_parameters": {
+        "model__C": 1.0
+      }
+    },
+    {
+      "model": "XGBoost",
+      "cv_recall_sensitivity": 0.8019762845849803,
+      "cv_precision": 0.8336796536796538,
+      "cv_f1": 0.817263666565992,
+      "cv_roc_auc": 0.9075245205679987,
+      "test_accuracy": 0.8360655737704918,
+      "test_precision": 0.8214285714285714,
+      "test_recall_sensitivity": 0.8214285714285714,
+      "test_specificity": 0.8484848484848485,
+      "test_f1": 0.8214285714285714,
+      "test_roc_auc": 0.9015151515151515,
+      "test_average_precision": 0.8620915628746929,
+      "test_brier_score": 0.11758553981781006,
+      "test_confusion_matrix": [
+        [
+          28,
+          5
+        ],
+        [
+          5,
+          23
+        ]
+      ],
+      "best_parameters": {
+        "model__learning_rate": 0.1,
+        "model__max_depth": 2,
+        "model__n_estimators": 100
+      }
+    },
+    {
+      "model": "Support Vector Machine",
+      "cv_recall_sensitivity": 0.80197628458498,
+      "cv_precision": 0.8203549783549784,
+      "cv_f1": 0.8096735360960992,
+      "cv_roc_auc": 0.9047633525894396,
+      "test_accuracy": 0.8524590163934426,
+      "test_precision": 0.8518518518518519,
+      "test_recall_sensitivity": 0.8214285714285714,
+      "test_specificity": 0.8787878787878788,
+      "test_f1": 0.8363636363636363,
+      "test_roc_auc": 0.8961038961038962,
+      "test_average_precision": 0.8536790269579468,
+      "test_brier_score": 0.11099307635069625,
+      "test_confusion_matrix": [
+        [
+          29,
+          4
+        ],
+        [
+          5,
+          23
+        ]
+      ],
+      "best_parameters": {
+        "model__estimator__C": 2.0,
+        "model__estimator__kernel": "rbf"
+      }
+    },
+    {
+      "model": "Random Forest",
+      "cv_recall_sensitivity": 0.784189723320158,
+      "cv_precision": 0.8317097090552469,
+      "cv_f1": 0.8064342804104573,
+      "cv_roc_auc": 0.9049711158406811,
+      "test_accuracy": 0.8688524590163934,
+      "test_precision": 0.8571428571428571,
+      "test_recall_sensitivity": 0.8571428571428571,
+      "test_specificity": 0.8787878787878788,
+      "test_f1": 0.8571428571428571,
+      "test_roc_auc": 0.9053030303030304,
+      "test_average_precision": 0.8614873558179595,
+      "test_brier_score": 0.11326338797814206,
+      "test_confusion_matrix": [
+        [
+          29,
+          4
+        ],
+        [
+          4,
+          24
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 1,
+        "model__n_estimators": 150
+      }
+    },
+    {
+      "model": "K-Nearest Neighbors",
+      "cv_recall_sensitivity": 0.7474308300395256,
+      "cv_precision": 0.8617543859649122,
+      "cv_f1": 0.7995595253678067,
+      "cv_roc_auc": 0.8695021564586781,
+      "test_accuracy": 0.9016393442622951,
+      "test_precision": 0.8928571428571429,
+      "test_recall_sensitivity": 0.8928571428571429,
+      "test_specificity": 0.9090909090909091,
+      "test_f1": 0.8928571428571429,
+      "test_roc_auc": 0.9237012987012988,
+      "test_average_precision": 0.8822097691535631,
+      "test_brier_score": 0.10491803278688526,
+      "test_confusion_matrix": [
+        [
+          30,
+          3
+        ],
+        [
+          3,
+          25
+        ]
+      ],
+      "best_parameters": {
+        "model__n_neighbors": 5,
+        "model__weights": "uniform"
+      }
+    },
+    {
+      "model": "Decision Tree",
+      "cv_recall_sensitivity": 0.7383399209486166,
+      "cv_precision": 0.7499427917620137,
+      "cv_f1": 0.7430540827147402,
+      "cv_roc_auc": 0.8239279641453555,
+      "test_accuracy": 0.7213114754098361,
+      "test_precision": 0.72,
+      "test_recall_sensitivity": 0.6428571428571429,
+      "test_specificity": 0.7878787878787878,
+      "test_f1": 0.6792452830188679,
+      "test_roc_auc": 0.800865800865801,
+      "test_average_precision": 0.7012585436607093,
+      "test_brier_score": 0.20961833091541154,
+      "test_confusion_matrix": [
+        [
+          26,
+          7
+        ],
+        [
+          10,
+          18
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": 6,
+        "model__min_samples_leaf": 5
+      }
+    }
+  ],
+  "model_version": "heart-v1.0.0"
+}

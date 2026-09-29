@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container hero-section">
+  <div class="hero-copy">
+    <p class="eyebrow">MACHINE LEARNING · HEALTH DATA</p>
+    <h1>AI-Based Multi-Disease<br><span>Prediction System</span></h1>
+    <p class="hero-subtitle">A transparent academic demonstration of how supervised models classify public health datasets.</p>
+    <div class="d-flex flex-wrap gap-3 mt-4">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('prediction_index') }}">Explore prediction modules <span aria-hidden="true">→</span></a>
+      <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('performance') }}">Review model results</a>
+    </div>
+    <div class="hero-note"><span class="note-rule"></span><span>Predictions are algorithmic estimates for education and research. They do not replace clinical assessment.</span></div>
+  </div>
+  <div class="hero-side" aria-label="Project workflow summary">
+    <div class="side-top"><span class="status-dot"></span> MODEL PIPELINE</div>
+    <div class="workflow-step"><b>01</b><span>Dataset-specific inputs</span></div>
+    <div class="workflow-step"><b>02</b><span>Validated transformation</span></div>
+    <div class="workflow-step"><b>03</b><span>Trained classifier</span></div>
+    <div class="workflow-step"><b>04</b><span>Result with explanation</span></div>
+    <div class="side-foot">Reproducible · Interpretable · Carefully qualified</div>
+  </div>
+</section>
+
+<section class="container section-block">
+  <div class="section-heading">
+    <div><p class="eyebrow">CHOOSE A MODULE</p><h2>Four dataset-specific studies</h2></div>
+    <a href="{{ url_for('datasets') }}" class="text-link">View source and dataset notes <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="row g-3">
+    {% for key, disease in diseases.items() %}
+    <div class="col-md-6 col-xl-3">
+      <article class="module-card h-100">
+        <div class="module-index">0{{ loop.index }}</div>
+        <h3>{{ disease.title }}</h3>
+        <p>{{ disease.short_description }}</p>
+        <a href="{{ url_for('predict', disease_key=key) }}" class="card-link">Open module <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="container section-block pb-5">
+  <div class="research-band">
+    <div><p class="eyebrow">HOW TO READ A RESULT</p><h2>Model output is a signal to study, not a medical conclusion.</h2></div>
+    <p>Each module uses a different public dataset and label. A score is meaningful only in the context of that source, its population, its missing values, and its validation results.</p>
+  </div>
+</section>
+{% endblock %}

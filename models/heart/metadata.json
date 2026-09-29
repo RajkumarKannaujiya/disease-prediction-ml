@@ -1,0 +1,141 @@
+{
+  "disease_key": "heart",
+  "disease_title": "Heart disease",
+  "model_name": "Logistic Regression",
+  "model_version": "heart-v1.0.0",
+  "trained_at_utc": "2026-09-29T07:07:42.553507+00:00",
+  "random_seed": 42,
+  "feature_names": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "positive_class": 1,
+  "target_description": "Binary target: source num=0 versus source num>0.",
+  "population_limit": "The benchmark is small and historical. Its target reflects the source study definition and is not a current clinical diagnosis.",
+  "dataset_source": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+  "dataset_license": "CC BY 4.0; cite the UCI dataset and its contributors.",
+  "source_sha256": "548eaf3b9d47152c9e0d25c167dc629740e8a4a13366a9be8fbd789ac3d2ebae",
+  "records_after_cleaning": 303,
+  "train_records": 242,
+  "test_records": 61,
+  "holdout_metrics": {
+    "accuracy": 0.8852459016393442,
+    "precision": 0.8888888888888888,
+    "recall_sensitivity": 0.8571428571428571,
+    "specificity": 0.9090909090909091,
+    "f1": 0.8727272727272727,
+    "roc_auc": 0.9188311688311689,
+    "average_precision": 0.8943698838766504,
+    "brier_score": 0.10732682486871725,
+    "confusion_matrix": [
+      [
+        30,
+        3
+      ],
+      [
+        4,
+        24
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.8823529411764706,
+        "recall": 0.9090909090909091,
+        "f1-score": 0.8955223880597015,
+        "support": 33.0
+      },
+      "1": {
+        "precision": 0.8888888888888888,
+        "recall": 0.8571428571428571,
+        "f1-score": 0.8727272727272727,
+        "support": 28.0
+      },
+      "accuracy": 0.8852459016393442,
+      "macro avg": {
+        "precision": 0.8856209150326797,
+        "recall": 0.8831168831168831,
+        "f1-score": 0.8841248303934871,
+        "support": 61.0
+      },
+      "weighted avg": {
+        "precision": 0.8853530483231543,
+        "recall": 0.8852459016393442,
+        "f1-score": 0.8850590564317014,
+        "support": 61.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "ca",
+        "mean_absolute_shap": 0.15684533436560866
+      },
+      {
+        "feature": "cp",
+        "mean_absolute_shap": 0.13939476134626724
+      },
+      {
+        "feature": "thal",
+        "mean_absolute_shap": 0.08706308697297195
+      },
+      {
+        "feature": "sex",
+        "mean_absolute_shap": 0.08580455523815027
+      },
+      {
+        "feature": "slope",
+        "mean_absolute_shap": 0.0720515258855503
+      },
+      {
+        "feature": "oldpeak",
+        "mean_absolute_shap": 0.048446670449541485
+      },
+      {
+        "feature": "trestbps",
+        "mean_absolute_shap": 0.03737888580585239
+      },
+      {
+        "feature": "exang",
+        "mean_absolute_shap": 0.033082541743540576
+      },
+      {
+        "feature": "thalach",
+        "mean_absolute_shap": 0.02738127055271784
+      },
+      {
+        "feature": "chol",
+        "mean_absolute_shap": 0.020176516499240155
+      },
+      {
+        "feature": "restecg",
+        "mean_absolute_shap": 0.013441631884240276
+      },
+      {
+        "feature": "fbs",
+        "mean_absolute_shap": 0.00914101419778317
+      },
+      {
+        "feature": "age",
+        "mean_absolute_shap": 0.0019935726814113226
+      }
+    ]
+  },
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "probability_note": "Model probability estimate; not clinically calibrated or a personal medical risk.",
+  "python_version": "3.13.2",
+  "scikit_learn_version": "1.9.1"
+}

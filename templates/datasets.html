@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header"><p class="eyebrow">DATA PROVENANCE</p><h1>Datasets and variables</h1><p class="lead">Each module uses a separate public benchmark dataset. Source labels and population limits carry through to the application result.</p></section>
+<section class="container section-block">
+  {% for key, info in disease_info.items() %}
+  {% set q = quality.get(key) %}
+  <article class="dataset-panel">
+    <div class="section-heading"><div><p class="eyebrow">0{{ loop.index }} · {{ info.dataset }}</p><h2>{{ diseases[key].title }}</h2></div>{% if q %}<span class="tag">{{ q.modeling_records }} analyzed rows</span>{% endif %}</div>
+    <p><b>Source:</b> <a href="{{ info.source }}" target="_blank" rel="noopener">{{ info.source }}</a></p>
+    <p><b>License/source note:</b> {{ info.license }}</p>
+    <p><b>Target:</b> {{ info.target }}</p>
+    <p><b>Population limitation:</b> {{ info.population_limit }}</p>
+    <details><summary>Input feature names</summary><ul class="feature-chips">{% for feature in info.features %}<li>{{ feature.label }} <code>{{ feature.name }}</code></li>{% endfor %}</ul></details>
+    {% if q %}<details class="mt-2"><summary>Measured data-quality profile</summary><div class="dataset-stats"><span>Raw records: <b>{{ q.source_records }}</b></span><span>Modeling records: <b>{{ q.modeling_records }}</b></span><span>Exact duplicate rows detected: <b>{{ q.exact_duplicate_rows_detected }}</b> (kept; grouped during splitting)</span><span>Target classes: <b>{{ q.target_counts }}</b></span></div><div class="table-responsive mt-2"><table class="table table-sm"><thead><tr><th>Feature</th><th>Type</th><th>Missing in modeling source</th><th>1.5×IQR flags</th></tr></thead><tbody>{% for feature in q.features %}<tr><td>{{ feature }}</td><td>{{ q.feature_types[feature] }}</td><td>{{ q.missing_by_feature[feature] }}</td><td>{{ q.outlier_iqr_counts.get(feature, '—') }}</td></tr>{% endfor %}</tbody></table></div><p class="small muted">Outlier counts use the 1.5×IQR screening rule and are descriptive only; they were not removed automatically.</p></details>{% else %}<p class="muted">Run dataset download and model training to generate the actual profile.</p>{% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

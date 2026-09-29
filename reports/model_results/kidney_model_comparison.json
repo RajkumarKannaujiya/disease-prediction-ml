@@ -1,0 +1,177 @@
+[
+  {
+    "model": "Random Forest",
+    "cv_recall_sensitivity": 0.9949999999999999,
+    "cv_precision": 0.9951219512195122,
+    "cv_f1": 0.9949992186279106,
+    "cv_roc_auc": 1.0,
+    "test_accuracy": 0.9875,
+    "test_precision": 0.9803921568627451,
+    "test_recall_sensitivity": 1.0,
+    "test_specificity": 0.9666666666666667,
+    "test_f1": 0.9900990099009901,
+    "test_roc_auc": 1.0,
+    "test_average_precision": 1.0,
+    "test_brier_score": 0.00981525397825236,
+    "test_confusion_matrix": [
+      [
+        29,
+        1
+      ],
+      [
+        0,
+        50
+      ]
+    ],
+    "best_parameters": {
+      "model__max_depth": 8,
+      "model__min_samples_leaf": 1,
+      "model__n_estimators": 150
+    }
+  },
+  {
+    "model": "XGBoost",
+    "cv_recall_sensitivity": 0.9949999999999999,
+    "cv_precision": 0.9901219512195121,
+    "cv_f1": 0.9925308641975308,
+    "cv_roc_auc": 0.9997916666666666,
+    "test_accuracy": 0.9625,
+    "test_precision": 0.9795918367346939,
+    "test_recall_sensitivity": 0.96,
+    "test_specificity": 0.9666666666666667,
+    "test_f1": 0.9696969696969697,
+    "test_roc_auc": 0.9986666666666667,
+    "test_average_precision": 0.999207843137255,
+    "test_brier_score": 0.017035778611898422,
+    "test_confusion_matrix": [
+      [
+        29,
+        1
+      ],
+      [
+        2,
+        48
+      ]
+    ],
+    "best_parameters": {
+      "model__learning_rate": 0.1,
+      "model__max_depth": 2,
+      "model__n_estimators": 100
+    }
+  },
+  {
+    "model": "Support Vector Machine",
+    "cv_recall_sensitivity": 0.99,
+    "cv_precision": 1.0,
+    "cv_f1": 0.9949367088607595,
+    "cv_roc_auc": 0.9997916666666666,
+    "test_accuracy": 0.9875,
+    "test_precision": 1.0,
+    "test_recall_sensitivity": 0.98,
+    "test_specificity": 1.0,
+    "test_f1": 0.98989898989899,
+    "test_roc_auc": 1.0,
+    "test_average_precision": 1.0,
+    "test_brier_score": 0.007782126001930093,
+    "test_confusion_matrix": [
+      [
+        30,
+        0
+      ],
+      [
+        1,
+        49
+      ]
+    ],
+    "best_parameters": {
+      "model__estimator__C": 0.5,
+      "model__estimator__kernel": "rbf"
+    }
+  },
+  {
+    "model": "Logistic Regression",
+    "cv_recall_sensitivity": 0.99,
+    "cv_precision": 1.0,
+    "cv_f1": 0.9949367088607595,
+    "cv_roc_auc": 0.9991666666666668,
+    "test_accuracy": 0.9875,
+    "test_precision": 1.0,
+    "test_recall_sensitivity": 0.98,
+    "test_specificity": 1.0,
+    "test_f1": 0.98989898989899,
+    "test_roc_auc": 1.0,
+    "test_average_precision": 1.0,
+    "test_brier_score": 0.010153853183290004,
+    "test_confusion_matrix": [
+      [
+        30,
+        0
+      ],
+      [
+        1,
+        49
+      ]
+    ],
+    "best_parameters": {
+      "model__C": 1.0
+    }
+  },
+  {
+    "model": "Decision Tree",
+    "cv_recall_sensitivity": 0.97,
+    "cv_precision": 0.9704878048780488,
+    "cv_f1": 0.9698621131954465,
+    "cv_roc_auc": 0.963125,
+    "test_accuracy": 0.9375,
+    "test_precision": 0.9411764705882353,
+    "test_recall_sensitivity": 0.96,
+    "test_specificity": 0.9,
+    "test_f1": 0.9504950495049505,
+    "test_roc_auc": 0.9473333333333334,
+    "test_average_precision": 0.9477164556962024,
+    "test_brier_score": 0.05556516767591883,
+    "test_confusion_matrix": [
+      [
+        27,
+        3
+      ],
+      [
+        2,
+        48
+      ]
+    ],
+    "best_parameters": {
+      "model__max_depth": 3,
+      "model__min_samples_leaf": 2
+    }
+  },
+  {
+    "model": "K-Nearest Neighbors",
+    "cv_recall_sensitivity": 0.9200000000000002,
+    "cv_precision": 1.0,
+    "cv_f1": 0.9576623946244199,
+    "cv_roc_auc": 0.9912500000000002,
+    "test_accuracy": 0.925,
+    "test_precision": 1.0,
+    "test_recall_sensitivity": 0.88,
+    "test_specificity": 1.0,
+    "test_f1": 0.9361702127659575,
+    "test_roc_auc": 0.9870000000000001,
+    "test_average_precision": 0.9900830332132853,
+    "test_brier_score": 0.047,
+    "test_confusion_matrix": [
+      [
+        30,
+        0
+      ],
+      [
+        6,
+        44
+      ]
+    ],
+    "best_parameters": {
+      "model__n_neighbors": 5,
+      "model__weights": "uniform"
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header"><p class="eyebrow">OPTIONAL LOCAL FEATURE</p><h1>Prediction history</h1><p class="lead">History is disabled by default so submitted health values are not kept in the app database.</p></section>
+<section class="container section-block">
+  {% if not history_enabled %}
+  <div class="empty-state"><h2>History is off</h2><p>Predictions are processed for their result and aren't saved by this app. A local administrator can enable history with <code>DISEASE_APP_STORE_HISTORY=1</code>.</p><a href="{{ url_for('prediction_index') }}" class="btn btn-primary">Open prediction studies</a></div>
+  {% else %}
+  <div class="alert alert-info" role="status">History is enabled for this local instance. Submitted input values and outputs are stored in its SQLite database.</div>
+  {% if records %}
+  <div class="d-flex justify-content-end mb-3"><form method="post" action="{{ url_for('history_clear') }}" data-confirm="Clear all local prediction history?"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="btn btn-outline-danger" type="submit">Clear history</button></form></div>
+  <div class="table-responsive"><table class="table table-hover align-middle"><thead><tr><th>Timestamp (UTC)</th><th>Module</th><th>Predicted class</th><th>Model estimate</th><th>Version</th><th>Input values</th></tr></thead><tbody>
+  {% for record in records %}<tr><td class="small">{{ record.created_at }}</td><td>{{ diseases[record.disease].title if record.disease in diseases else record.disease }}</td><td>Class {{ record.prediction }}</td><td>{{ '%.1f'|format(record.probability * 100) if record.probability is not none else 'Not available' }}%</td><td class="small">{{ record.model_version }}</td><td><details><summary>View fields</summary><pre class="history-json">{{ record.inputs|tojson(indent=2) }}</pre></details></td></tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<div class="empty-state"><h2>No saved predictions</h2><p>Predictions made while local history is enabled will appear here.</p><a href="{{ url_for('prediction_index') }}" class="btn btn-primary">Open studies</a></div>{% endif %}
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,9 @@
+feature,mean_absolute_shap
+Glucose,0.19481365584912178
+BMI,0.14589761477632837
+Age,0.07162173363820207
+Pregnancies,0.0
+SkinThickness,0.0
+BloodPressure,0.0
+Insulin,0.0
+DiabetesPedigreeFunction,0.0

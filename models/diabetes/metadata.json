@@ -1,0 +1,116 @@
+{
+  "disease_key": "diabetes",
+  "disease_title": "Diabetes",
+  "model_name": "Decision Tree",
+  "model_version": "diabetes-v1.0.0",
+  "trained_at_utc": "2026-09-29T07:06:55.434494+00:00",
+  "random_seed": 42,
+  "feature_names": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age"
+  ],
+  "positive_class": 1,
+  "target_description": "Published binary Outcome label (0/1).",
+  "population_limit": "The source cohort is women aged 21 or older of Pima heritage; results do not establish performance for other populations.",
+  "dataset_source": "https://search.r-project.org/CRAN/refmans/mlbench/html/PimaIndiansDiabetes.html",
+  "dataset_license": "Acquired from the CRAN mlbench package (GPL-2); retain attribution and license when redistributing the packaged copy.",
+  "source_sha256": "e920964eb717a3749833979532bb31110d9ae9788ea0768bc889f91a0b756f39",
+  "records_after_cleaning": 768,
+  "train_records": 614,
+  "test_records": 154,
+  "holdout_metrics": {
+    "accuracy": 0.7012987012987013,
+    "precision": 0.5487804878048781,
+    "recall_sensitivity": 0.8333333333333334,
+    "specificity": 0.63,
+    "f1": 0.6617647058823529,
+    "roc_auc": 0.8173148148148147,
+    "average_precision": 0.6820753864255954,
+    "brier_score": 0.17732983307718775,
+    "confusion_matrix": [
+      [
+        63,
+        37
+      ],
+      [
+        9,
+        45
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.875,
+        "recall": 0.63,
+        "f1-score": 0.7325581395348837,
+        "support": 100.0
+      },
+      "1": {
+        "precision": 0.5487804878048781,
+        "recall": 0.8333333333333334,
+        "f1-score": 0.6617647058823529,
+        "support": 54.0
+      },
+      "accuracy": 0.7012987012987013,
+      "macro avg": {
+        "precision": 0.711890243902439,
+        "recall": 0.7316666666666667,
+        "f1-score": 0.6971614227086183,
+        "support": 154.0
+      },
+      "weighted avg": {
+        "precision": 0.7606113398796326,
+        "recall": 0.7012987012987013,
+        "f1-score": 0.7077344679943859,
+        "support": 154.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "Glucose",
+        "mean_absolute_shap": 0.19481365584912178
+      },
+      {
+        "feature": "BMI",
+        "mean_absolute_shap": 0.14589761477632837
+      },
+      {
+        "feature": "Age",
+        "mean_absolute_shap": 0.07162173363820207
+      },
+      {
+        "feature": "Pregnancies",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "SkinThickness",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "BloodPressure",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "Insulin",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "DiabetesPedigreeFunction",
+        "mean_absolute_shap": 0.0
+      }
+    ]
+  },
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "probability_note": "Model probability estimate; not clinically calibrated or a personal medical risk.",
+  "python_version": "3.13.2",
+  "scikit_learn_version": "1.9.1"
+}

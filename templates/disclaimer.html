@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header"><p class="eyebrow">IMPORTANT INFORMATION</p><h1>Disclaimer</h1></section>
+<section class="container content-narrow section-block disclaimer-page">
+  <h2>Educational and research use only</h2>
+  <p>This application provides algorithmic classifications and model probability estimates based on selected public datasets. It is not a medical device, a clinical prediction rule, or a substitute for a qualified health professional.</p>
+  <h2>No diagnosis or treatment advice</h2>
+  <p>Do not use this system to diagnose a condition, delay care, choose treatment, or change medication. Model performance on a small historical benchmark does not establish safety or effectiveness for an individual.</p>
+  <h2>Population and data limitations</h2>
+  <p>Each dataset has its own target definition, collection context, population, missingness, and bias. Model output probabilities are not validated personal risk probabilities. Results may be inaccurate, particularly for populations not represented in the source data.</p>
+  <h2>Local history</h2>
+  <p>Submitted feature values and predictions may be recorded in the local SQLite database to demonstrate history functionality. Do not enter identifiable or sensitive personal health information. Clear history when finished.</p>
+</section>
+{% endblock %}

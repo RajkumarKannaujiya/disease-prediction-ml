@@ -1,0 +1,126 @@
+{
+  "disease_key": "liver",
+  "disease_title": "Liver disease",
+  "model_name": "Support Vector Machine",
+  "model_version": "liver-v1.0.0",
+  "trained_at_utc": "2026-09-29T07:08:29.556205+00:00",
+  "random_seed": 42,
+  "feature_names": [
+    "age",
+    "gender",
+    "total_bilirubin",
+    "direct_bilirubin",
+    "alkphos",
+    "sgpt",
+    "sgot",
+    "total_proteins",
+    "albumin",
+    "ag_ratio"
+  ],
+  "positive_class": 1,
+  "target_description": "Published Selector class (disease versus non-disease; mapping verified during download).",
+  "population_limit": "The 583-record cohort is regional and has unequal representation by sex; external validity is unknown.",
+  "dataset_source": "https://archive.ics.uci.edu/dataset/225/ilpd+indian+liver+patient+data",
+  "dataset_license": "CC BY 4.0; cite the UCI dataset and its contributors.",
+  "source_sha256": "192dfdf52c2e310713f6fc9d8402ca5355ffd2a56a30bc66621ddf50a9b46798",
+  "records_after_cleaning": 583,
+  "train_records": 466,
+  "test_records": 117,
+  "holdout_metrics": {
+    "accuracy": 0.717948717948718,
+    "precision": 0.7339449541284404,
+    "recall_sensitivity": 0.9523809523809523,
+    "specificity": 0.12121212121212122,
+    "f1": 0.8290155440414507,
+    "roc_auc": 0.7316017316017316,
+    "average_precision": 0.8883275066811379,
+    "brier_score": 0.17704898658846271,
+    "confusion_matrix": [
+      [
+        4,
+        29
+      ],
+      [
+        4,
+        80
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.5,
+        "recall": 0.12121212121212122,
+        "f1-score": 0.1951219512195122,
+        "support": 33.0
+      },
+      "1": {
+        "precision": 0.7339449541284404,
+        "recall": 0.9523809523809523,
+        "f1-score": 0.8290155440414507,
+        "support": 84.0
+      },
+      "accuracy": 0.717948717948718,
+      "macro avg": {
+        "precision": 0.6169724770642202,
+        "recall": 0.5367965367965368,
+        "f1-score": 0.5120687476304815,
+        "support": 117.0
+      },
+      "weighted avg": {
+        "precision": 0.6679604798870854,
+        "recall": 0.717948717948718,
+        "f1-score": 0.6502250435019296,
+        "support": 117.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "direct_bilirubin",
+        "mean_absolute_shap": 0.04220949709460851
+      },
+      {
+        "feature": "total_bilirubin",
+        "mean_absolute_shap": 0.0336643257412855
+      },
+      {
+        "feature": "sgpt",
+        "mean_absolute_shap": 0.03312091149036877
+      },
+      {
+        "feature": "alkphos",
+        "mean_absolute_shap": 0.032851451210650286
+      },
+      {
+        "feature": "albumin",
+        "mean_absolute_shap": 0.027262093462245448
+      },
+      {
+        "feature": "age",
+        "mean_absolute_shap": 0.02684302245459033
+      },
+      {
+        "feature": "sgot",
+        "mean_absolute_shap": 0.02104318953276389
+      },
+      {
+        "feature": "total_proteins",
+        "mean_absolute_shap": 0.020528034760940887
+      },
+      {
+        "feature": "ag_ratio",
+        "mean_absolute_shap": 0.0074739850255320555
+      },
+      {
+        "feature": "gender",
+        "mean_absolute_shap": 0.005407312925667644
+      }
+    ]
+  },
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "probability_note": "Model probability estimate; not clinically calibrated or a personal medical risk.",
+  "python_version": "3.13.2",
+  "scikit_learn_version": "1.9.1"
+}

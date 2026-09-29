@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header compact-header">
+  <p class="eyebrow">GUIDED DATA ENTRY</p>
+  <h1>{{ disease.title }} estimate</h1>
+  <p class="lead">{{ disease.short_description }}</p>
+  <p class="small muted">This form mirrors the fields in the <a href="{{ disease.dataset_source }}" target="_blank" rel="noopener">{{ disease.dataset_name }}</a>. Use values from the matching report or dataset record.</p>
+</section>
+
+<section class="container form-layout section-block">
+  <form method="post" class="form-card prediction-form" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+    <div class="form-intro">
+      <div class="form-intro-icon" aria-hidden="true">i</div>
+      <div>
+        <strong>Don't have every value?</strong>
+        <p>For any field you don't know, select “I don't know this value.” The saved pipeline will fill it using its training-data imputer. Don't guess or enter a placeholder.</p>
+      </div>
+    </div>
+
+    <div class="completion-wrap">
+      <div class="completion-copy"><span>Form progress</span><strong data-progress-label aria-live="polite">0 of {{ disease.features|length }} answered</strong></div>
+      <div class="completion-track" role="progressbar" aria-label="Form completion" aria-valuemin="0" aria-valuemax="{{ disease.features|length }}" aria-valuenow="0"><span data-progress-fill></span></div>
+    </div>
+
+    <div class="form-grid">
+      {% for feature in disease.features %}
+      <div class="field-wrap {% if errors.get(feature.name) %}field-error{% endif %}" data-form-field>
+        <label for="{{ feature.name }}" class="form-label">{{ feature.label }} <span class="required-mark" aria-hidden="true">*</span></label>
+        {% if feature.kind == 'select' %}
+          <select id="{{ feature.name }}" name="{{ feature.name }}" class="form-select" data-feature-input aria-required="true" aria-describedby="{{ feature.name }}-help{% if errors.get(feature.name) %} {{ feature.name }}-error{% endif %}" aria-invalid="{{ 'true' if errors.get(feature.name) else 'false' }}">
+            <option value="">Choose a value from the report</option>
+            {% for option in feature.options %}<option value="{{ option }}" {% if submitted.get(feature.name) == option %}selected{% endif %}>{{ feature.option_labels[loop.index0] if feature.option_labels else option }}</option>{% endfor %}
+          </select>
+        {% else %}
+          <input id="{{ feature.name }}" name="{{ feature.name }}" class="form-control" type="number" step="{{ feature.step }}" min="{{ feature.minimum }}" max="{{ feature.maximum }}" value="{{ submitted.get(feature.name, '') }}" inputmode="decimal" data-feature-input aria-required="true" aria-describedby="{{ feature.name }}-help{% if errors.get(feature.name) %} {{ feature.name }}-error{% endif %}" aria-invalid="{{ 'true' if errors.get(feature.name) else 'false' }}">
+        {% endif %}
+        <div id="{{ feature.name }}-help" class="field-help">{{ feature.help_text or 'Use the source dataset unit and coding.' }}</div>
+        <div class="unknown-option">
+          <input type="checkbox" id="{{ feature.name }}_unknown" name="{{ feature.name }}_unknown" value="1" data-unknown-toggle {% if submitted.get(feature.name ~ '_unknown') == '1' %}checked{% endif %}>
+          <label for="{{ feature.name }}_unknown">I don't know this value</label>
+        </div>
+        {% if errors.get(feature.name) %}<div class="invalid-feedback d-block" id="{{ feature.name }}-error">{{ errors[feature.name] }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if errors.get('form') %}<div class="alert alert-danger mt-3" role="alert">{{ errors.form }}</div>{% endif %}
+
+    <div class="form-actions">
+      <p>Values are processed to calculate this estimate and aren't saved in the app by default. See <a href="{{ url_for('disclaimer') }}">research and privacy notes</a>.</p>
+      <div class="form-action-buttons">
+        <button type="reset" class="btn btn-outline-secondary">Clear entries</button>
+        <button type="submit" class="btn btn-primary btn-lg">Show my model estimate <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+  </form>
+
+  <aside class="form-aside">
+    <p class="eyebrow">BEFORE YOU CONTINUE</p>
+    <h2>Use the right source.</h2>
+    <p>{{ disease.population_limit }}</p>
+    <p>Every field must come from the matching dataset or report. This model cannot confirm whether a measurement is current, accurate, or clinically normal.</p>
+    <p class="privacy-callout"><strong>Your entries:</strong> they're used for this request only. They aren't stored in the app unless a local administrator deliberately enables history.</p>
+    <a href="{{ url_for('datasets') }}">See dataset details →</a>
+  </aside>
+</section>
+{% endblock %}

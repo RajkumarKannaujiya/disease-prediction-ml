@@ -1,0 +1,196 @@
+{
+  "disease_key": "kidney",
+  "disease_title": "Chronic kidney disease",
+  "model_name": "Random Forest",
+  "model_version": "kidney-v1.0.0",
+  "trained_at_utc": "2026-09-29T07:09:21.491007+00:00",
+  "random_seed": 42,
+  "feature_names": [
+    "age",
+    "bp",
+    "sg",
+    "al",
+    "su",
+    "rbc",
+    "pc",
+    "pcc",
+    "ba",
+    "bgr",
+    "bu",
+    "sc",
+    "sod",
+    "pot",
+    "hemo",
+    "pcv",
+    "wc",
+    "rc",
+    "htn",
+    "dm",
+    "cad",
+    "appet",
+    "pe",
+    "ane"
+  ],
+  "positive_class": 1,
+  "target_description": "Published class: ckd versus notckd.",
+  "population_limit": "The 400-record cohort was collected over a short period at a single source; missingness and population shift limit generalization.",
+  "dataset_source": "https://archive.ics.uci.edu/dataset/336/chronic+kidney+disease",
+  "dataset_license": "CC BY 4.0; cite the UCI dataset and its contributors.",
+  "source_sha256": "35b9acfe7a600abc32b0cba139351c5a34d203cf8f0dbc20c275a8cd9e53a594",
+  "records_after_cleaning": 400,
+  "train_records": 320,
+  "test_records": 80,
+  "holdout_metrics": {
+    "accuracy": 0.9875,
+    "precision": 0.9803921568627451,
+    "recall_sensitivity": 1.0,
+    "specificity": 0.9666666666666667,
+    "f1": 0.9900990099009901,
+    "roc_auc": 1.0,
+    "average_precision": 1.0,
+    "brier_score": 0.00981525397825236,
+    "confusion_matrix": [
+      [
+        29,
+        1
+      ],
+      [
+        0,
+        50
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 1.0,
+        "recall": 0.9666666666666667,
+        "f1-score": 0.9830508474576272,
+        "support": 30.0
+      },
+      "1": {
+        "precision": 0.9803921568627451,
+        "recall": 1.0,
+        "f1-score": 0.9900990099009901,
+        "support": 50.0
+      },
+      "accuracy": 0.9875,
+      "macro avg": {
+        "precision": 0.9901960784313726,
+        "recall": 0.9833333333333334,
+        "f1-score": 0.9865749286793086,
+        "support": 80.0
+      },
+      "weighted avg": {
+        "precision": 0.9877450980392156,
+        "recall": 0.9875,
+        "f1-score": 0.987455948984729,
+        "support": 80.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "hemo",
+        "mean_absolute_shap": 0.07051440404628302
+      },
+      {
+        "feature": "al",
+        "mean_absolute_shap": 0.049027495571759
+      },
+      {
+        "feature": "dm",
+        "mean_absolute_shap": 0.047102718431486855
+      },
+      {
+        "feature": "sc",
+        "mean_absolute_shap": 0.045515118248202806
+      },
+      {
+        "feature": "sg",
+        "mean_absolute_shap": 0.0441084550592444
+      },
+      {
+        "feature": "htn",
+        "mean_absolute_shap": 0.039289740003718494
+      },
+      {
+        "feature": "pcv",
+        "mean_absolute_shap": 0.03297327776170082
+      },
+      {
+        "feature": "rc",
+        "mean_absolute_shap": 0.021316795993467124
+      },
+      {
+        "feature": "bgr",
+        "mean_absolute_shap": 0.020220490507771364
+      },
+      {
+        "feature": "sod",
+        "mean_absolute_shap": 0.01513331795740915
+      },
+      {
+        "feature": "bu",
+        "mean_absolute_shap": 0.00978704010662527
+      },
+      {
+        "feature": "appet",
+        "mean_absolute_shap": 0.009048272660963032
+      },
+      {
+        "feature": "bp",
+        "mean_absolute_shap": 0.007313674031463596
+      },
+      {
+        "feature": "su",
+        "mean_absolute_shap": 0.007253139509657521
+      },
+      {
+        "feature": "pc",
+        "mean_absolute_shap": 0.005504430704970188
+      },
+      {
+        "feature": "rbc",
+        "mean_absolute_shap": 0.0047355821135284595
+      },
+      {
+        "feature": "age",
+        "mean_absolute_shap": 0.004159709928669947
+      },
+      {
+        "feature": "ane",
+        "mean_absolute_shap": 0.0031402207315801424
+      },
+      {
+        "feature": "wc",
+        "mean_absolute_shap": 0.002370619071665112
+      },
+      {
+        "feature": "pot",
+        "mean_absolute_shap": 0.002158015536131533
+      },
+      {
+        "feature": "pe",
+        "mean_absolute_shap": 0.002072961190389305
+      },
+      {
+        "feature": "ba",
+        "mean_absolute_shap": 0.001030823180482393
+      },
+      {
+        "feature": "pcc",
+        "mean_absolute_shap": 0.0009724603585408016
+      },
+      {
+        "feature": "cad",
+        "mean_absolute_shap": 0.0
+      }
+    ]
+  },
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "probability_note": "Model probability estimate; not clinically calibrated or a personal medical risk.",
+  "python_version": "3.13.2",
+  "scikit_learn_version": "1.9.1"
+}

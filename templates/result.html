@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header compact-header"><p class="eyebrow">MODEL OUTPUT</p><h1>Prediction result</h1><p class="lead">{{ disease.title }} · {{ result.model_name }} · {{ result.model_version }}</p></section>
+<section class="container result-layout section-block">
+  <article class="result-card">
+    <div class="result-kicker">PREDICTED SOURCE-DATASET LABEL</div>
+    <div class="result-class">{{ class_label }}</div>
+    <div class="probability-row"><span>Model estimate for the class 1 label</span><strong>{{ '%.1f'|format(result.positive_probability * 100) }}%</strong></div>
+    <div class="progress" role="progressbar" aria-valuenow="{{ '%.0f'|format(result.positive_probability * 100) }}" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar" style="width: {{ '%.1f'|format(result.positive_probability * 100) }}%"></div></div>
+    <p class="small muted mt-2">This is an uncalibrated estimate for a historical dataset label—not a personal health risk or diagnosis.</p>
+    <hr>
+    <h2>What influenced this model output?</h2>
+    {% if result.explanations %}
+    <p class="muted">Approximate local SHAP contributions relative to a small reference sample. Positive values push the model toward class 1; negative values push it toward class 0.</p>
+    <ul class="contribution-list">{% for item in result.explanations %}<li><span>{{ item.feature }}</span><b class="{{ 'positive-contribution' if item.value > 0 else 'negative-contribution' }}">{{ '%+.4f'|format(item.value) }}</b></li>{% endfor %}</ul>
+    {% else %}<p class="muted">A local feature explanation was unavailable for this request. The prediction remains an estimate from the saved model.</p>{% endif %}
+    <p class="disclaimer-box">{{ disease.target_description }}{% if 'Not provided; imputed by the model' in input_values.values() %} Unknown fields were filled by the model's training-data imputer.{% endif %} This output is for education and research only; it must not guide diagnosis or treatment.</p>
+    <div class="d-flex flex-wrap gap-2"><a class="btn btn-primary" href="{{ url_for('predict', disease_key=disease.key) }}">Make another estimate</a><a class="btn btn-outline-secondary" href="{{ url_for('prediction_index') }}">Choose another study</a>{% if history_enabled %}<a class="btn btn-outline-secondary" href="{{ url_for('history') }}">View local history</a>{% endif %}</div>
+  </article>
+  <aside class="form-aside"><p class="eyebrow">INPUT SUMMARY</p><h2>Submitted values</h2><dl class="input-summary">{% for key, value in input_values.items() %}<div><dt>{{ key }}</dt><dd>{{ value }}</dd></div>{% endfor %}</dl></aside>
+</section>
+{% endblock %}

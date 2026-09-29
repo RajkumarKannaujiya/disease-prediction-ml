@@ -1,0 +1,440 @@
+{
+  "disease_key": "diabetes",
+  "title": "Diabetes",
+  "selected_model": "Decision Tree",
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "target_counts": {
+    "0": 500,
+    "1": 268
+  },
+  "data_quality": {
+    "dataset_key": "diabetes",
+    "source_records": 768,
+    "records_after_target_cleaning": 768,
+    "exact_duplicate_rows_detected": 0,
+    "exact_duplicates_removed": 0,
+    "modeling_records": 768,
+    "features": [
+      "Pregnancies",
+      "Glucose",
+      "BloodPressure",
+      "SkinThickness",
+      "Insulin",
+      "BMI",
+      "DiabetesPedigreeFunction",
+      "Age"
+    ],
+    "feature_types": {
+      "Pregnancies": "float64",
+      "Glucose": "float64",
+      "BloodPressure": "float64",
+      "SkinThickness": "float64",
+      "Insulin": "float64",
+      "BMI": "float64",
+      "DiabetesPedigreeFunction": "float64",
+      "Age": "float64"
+    },
+    "missing_by_feature": {
+      "Pregnancies": 0,
+      "Glucose": 5,
+      "BloodPressure": 35,
+      "SkinThickness": 227,
+      "Insulin": 374,
+      "BMI": 11,
+      "DiabetesPedigreeFunction": 0,
+      "Age": 0
+    },
+    "target_counts": {
+      "0": 500,
+      "1": 268
+    },
+    "outlier_iqr_counts": {
+      "Pregnancies": 4,
+      "Glucose": 0,
+      "BloodPressure": 14,
+      "SkinThickness": 3,
+      "Insulin": 24,
+      "BMI": 8,
+      "DiabetesPedigreeFunction": 29,
+      "Age": 9
+    },
+    "train_records": 614,
+    "test_records": 154
+  },
+  "eda": {
+    "shape": [
+      768,
+      8
+    ],
+    "dtypes": {
+      "Pregnancies": "float64",
+      "Glucose": "float64",
+      "BloodPressure": "float64",
+      "SkinThickness": "float64",
+      "Insulin": "float64",
+      "BMI": "float64",
+      "DiabetesPedigreeFunction": "float64",
+      "Age": "float64"
+    },
+    "describe": {
+      "Pregnancies": {
+        "count": 768.0,
+        "mean": 3.8450520833333335,
+        "std": 3.3695780626988694,
+        "min": 0.0,
+        "25%": 1.0,
+        "50%": 3.0,
+        "75%": 6.0,
+        "max": 17.0
+      },
+      "Glucose": {
+        "count": 763.0,
+        "mean": 121.6867627785059,
+        "std": 30.53564107280403,
+        "min": 44.0,
+        "25%": 99.0,
+        "50%": 117.0,
+        "75%": 141.0,
+        "max": 199.0
+      },
+      "BloodPressure": {
+        "count": 733.0,
+        "mean": 72.40518417462484,
+        "std": 12.38215821010526,
+        "min": 24.0,
+        "25%": 64.0,
+        "50%": 72.0,
+        "75%": 80.0,
+        "max": 122.0
+      },
+      "SkinThickness": {
+        "count": 541.0,
+        "mean": 29.153419593345657,
+        "std": 10.476982369987208,
+        "min": 7.0,
+        "25%": 22.0,
+        "50%": 29.0,
+        "75%": 36.0,
+        "max": 99.0
+      },
+      "Insulin": {
+        "count": 394.0,
+        "mean": 155.5482233502538,
+        "std": 118.77585518724518,
+        "min": 14.0,
+        "25%": 76.25,
+        "50%": 125.0,
+        "75%": 190.0,
+        "max": 846.0
+      },
+      "BMI": {
+        "count": 757.0,
+        "mean": 32.457463672391015,
+        "std": 6.924988332105903,
+        "min": 18.2,
+        "25%": 27.5,
+        "50%": 32.3,
+        "75%": 36.6,
+        "max": 67.1
+      },
+      "DiabetesPedigreeFunction": {
+        "count": 768.0,
+        "mean": 0.47187630208333325,
+        "std": 0.3313285950127749,
+        "min": 0.078,
+        "25%": 0.24375,
+        "50%": 0.3725,
+        "75%": 0.62625,
+        "max": 2.42
+      },
+      "Age": {
+        "count": 768.0,
+        "mean": 33.240885416666664,
+        "std": 11.760231540678685,
+        "min": 21.0,
+        "25%": 24.0,
+        "50%": 29.0,
+        "75%": 41.0,
+        "max": 81.0
+      }
+    },
+    "target_counts": {
+      "0": 500,
+      "1": 268
+    },
+    "missing_counts": {
+      "Pregnancies": 0,
+      "Glucose": 5,
+      "BloodPressure": 35,
+      "SkinThickness": 227,
+      "Insulin": 374,
+      "BMI": 11,
+      "DiabetesPedigreeFunction": 0,
+      "Age": 0
+    },
+    "class_imbalance_ratio": 1.8656716417910448
+  },
+  "holdout_metrics": {
+    "accuracy": 0.7012987012987013,
+    "precision": 0.5487804878048781,
+    "recall_sensitivity": 0.8333333333333334,
+    "specificity": 0.63,
+    "f1": 0.6617647058823529,
+    "roc_auc": 0.8173148148148147,
+    "average_precision": 0.6820753864255954,
+    "brier_score": 0.17732983307718775,
+    "confusion_matrix": [
+      [
+        63,
+        37
+      ],
+      [
+        9,
+        45
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.875,
+        "recall": 0.63,
+        "f1-score": 0.7325581395348837,
+        "support": 100.0
+      },
+      "1": {
+        "precision": 0.5487804878048781,
+        "recall": 0.8333333333333334,
+        "f1-score": 0.6617647058823529,
+        "support": 54.0
+      },
+      "accuracy": 0.7012987012987013,
+      "macro avg": {
+        "precision": 0.711890243902439,
+        "recall": 0.7316666666666667,
+        "f1-score": 0.6971614227086183,
+        "support": 154.0
+      },
+      "weighted avg": {
+        "precision": 0.7606113398796326,
+        "recall": 0.7012987012987013,
+        "f1-score": 0.7077344679943859,
+        "support": 154.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "Glucose",
+        "mean_absolute_shap": 0.19481365584912178
+      },
+      {
+        "feature": "BMI",
+        "mean_absolute_shap": 0.14589761477632837
+      },
+      {
+        "feature": "Age",
+        "mean_absolute_shap": 0.07162173363820207
+      },
+      {
+        "feature": "Pregnancies",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "SkinThickness",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "BloodPressure",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "Insulin",
+        "mean_absolute_shap": 0.0
+      },
+      {
+        "feature": "DiabetesPedigreeFunction",
+        "mean_absolute_shap": 0.0
+      }
+    ]
+  },
+  "model_comparison": [
+    {
+      "model": "Decision Tree",
+      "cv_recall_sensitivity": 0.7763012181616833,
+      "cv_precision": 0.575844909807174,
+      "cv_f1": 0.6491905577857939,
+      "cv_roc_auc": 0.7936634828349944,
+      "test_accuracy": 0.7012987012987013,
+      "test_precision": 0.5487804878048781,
+      "test_recall_sensitivity": 0.8333333333333334,
+      "test_specificity": 0.63,
+      "test_f1": 0.6617647058823529,
+      "test_roc_auc": 0.8173148148148147,
+      "test_average_precision": 0.6820753864255954,
+      "test_brier_score": 0.17732983307718775,
+      "test_confusion_matrix": [
+        [
+          63,
+          37
+        ],
+        [
+          9,
+          45
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": 3,
+        "model__min_samples_leaf": 2
+      }
+    },
+    {
+      "model": "XGBoost",
+      "cv_recall_sensitivity": 0.770764119601329,
+      "cv_precision": 0.6145761853244724,
+      "cv_f1": 0.6822230298415336,
+      "cv_roc_auc": 0.8388911960132891,
+      "test_accuracy": 0.7337662337662337,
+      "test_precision": 0.5942028985507246,
+      "test_recall_sensitivity": 0.7592592592592593,
+      "test_specificity": 0.72,
+      "test_f1": 0.6666666666666666,
+      "test_roc_auc": 0.8416666666666667,
+      "test_average_precision": 0.7462619221087838,
+      "test_brier_score": 0.1622646450996399,
+      "test_confusion_matrix": [
+        [
+          72,
+          28
+        ],
+        [
+          13,
+          41
+        ]
+      ],
+      "best_parameters": {
+        "model__learning_rate": 0.1,
+        "model__max_depth": 2,
+        "model__n_estimators": 100
+      }
+    },
+    {
+      "model": "Logistic Regression",
+      "cv_recall_sensitivity": 0.7060908084163898,
+      "cv_precision": 0.6173879399718253,
+      "cv_f1": 0.6570191313057683,
+      "cv_roc_auc": 0.8234883720930231,
+      "test_accuracy": 0.7727272727272727,
+      "test_precision": 0.6507936507936508,
+      "test_recall_sensitivity": 0.7592592592592593,
+      "test_specificity": 0.78,
+      "test_f1": 0.7008547008547008,
+      "test_roc_auc": 0.866111111111111,
+      "test_average_precision": 0.7693197838784764,
+      "test_brier_score": 0.15539826655513164,
+      "test_confusion_matrix": [
+        [
+          78,
+          22
+        ],
+        [
+          13,
+          41
+        ]
+      ],
+      "best_parameters": {
+        "model__C": 0.1
+      }
+    },
+    {
+      "model": "Random Forest",
+      "cv_recall_sensitivity": 0.6965669988925802,
+      "cv_precision": 0.651552348360859,
+      "cv_f1": 0.6724228468241219,
+      "cv_roc_auc": 0.8296843853820597,
+      "test_accuracy": 0.7792207792207793,
+      "test_precision": 0.65625,
+      "test_recall_sensitivity": 0.7777777777777778,
+      "test_specificity": 0.78,
+      "test_f1": 0.711864406779661,
+      "test_roc_auc": 0.8501851851851852,
+      "test_average_precision": 0.7372102715432531,
+      "test_brier_score": 0.15281418615417863,
+      "test_confusion_matrix": [
+        [
+          78,
+          22
+        ],
+        [
+          12,
+          42
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": 8,
+        "model__min_samples_leaf": 3,
+        "model__n_estimators": 150
+      }
+    },
+    {
+      "model": "K-Nearest Neighbors",
+      "cv_recall_sensitivity": 0.593576965669989,
+      "cv_precision": 0.6546680961315108,
+      "cv_f1": 0.6218829384698228,
+      "cv_roc_auc": 0.7902637043189368,
+      "test_accuracy": 0.7272727272727273,
+      "test_precision": 0.6071428571428571,
+      "test_recall_sensitivity": 0.6296296296296297,
+      "test_specificity": 0.78,
+      "test_f1": 0.6181818181818182,
+      "test_roc_auc": 0.7805555555555554,
+      "test_average_precision": 0.6553715872552245,
+      "test_brier_score": 0.18311688311688312,
+      "test_confusion_matrix": [
+        [
+          78,
+          22
+        ],
+        [
+          20,
+          34
+        ]
+      ],
+      "best_parameters": {
+        "model__n_neighbors": 5,
+        "model__weights": "uniform"
+      }
+    },
+    {
+      "model": "Support Vector Machine",
+      "cv_recall_sensitivity": 0.5610188261351052,
+      "cv_precision": 0.6696682396682396,
+      "cv_f1": 0.6065782448063652,
+      "cv_roc_auc": 0.8260977297895902,
+      "test_accuracy": 0.7337662337662337,
+      "test_precision": 0.6326530612244898,
+      "test_recall_sensitivity": 0.5740740740740741,
+      "test_specificity": 0.82,
+      "test_f1": 0.6019417475728155,
+      "test_roc_auc": 0.8374074074074074,
+      "test_average_precision": 0.7195637374349719,
+      "test_brier_score": 0.15997324121489248,
+      "test_confusion_matrix": [
+        [
+          82,
+          18
+        ],
+        [
+          23,
+          31
+        ]
+      ],
+      "best_parameters": {
+        "model__estimator__C": 0.5,
+        "model__estimator__kernel": "rbf"
+      }
+    }
+  ],
+  "model_version": "diabetes-v1.0.0"
+}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container page-header"><p class="eyebrow">START HERE</p><h1>Choose a dataset study</h1><p class="lead">Pick the study that matches your report. Enter its recorded values and get a model estimate. If you don't know a field, the form lets you leave it to the model's imputer.</p><p class="small muted">Each study uses a different historical dataset. Their estimates are not comparable and are not personal medical risks.</p></section>
+<section class="container section-block"><div class="row g-3">
+{% for key, disease in diseases.items() %}<div class="col-md-6 col-xl-3"><article class="module-card module-card-large h-100"><div class="module-index">0{{ loop.index }}</div><h2>{{ disease.title }}</h2><p>{{ disease.short_description }}</p><p class="small muted">Dataset: {{ disease.dataset_name }}</p><a href="{{ url_for('predict', disease_key=key) }}" class="btn btn-outline-primary mt-2">Enter study values</a></article></div>{% endfor %}
+</div></section>
+{% endblock %}

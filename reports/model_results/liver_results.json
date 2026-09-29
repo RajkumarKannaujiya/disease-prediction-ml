@@ -1,0 +1,509 @@
+{
+  "disease_key": "liver",
+  "title": "Liver disease",
+  "selected_model": "Support Vector Machine",
+  "selection_rule": "Highest 5-fold grouped training cross-validation sensitivity/recall, ties broken by F1 then ROC-AUC; exact feature duplicates stayed in one fold; test split was not used for selection.",
+  "target_counts": {
+    "0": 167,
+    "1": 416
+  },
+  "data_quality": {
+    "dataset_key": "liver",
+    "source_records": 583,
+    "records_after_target_cleaning": 583,
+    "exact_duplicate_rows_detected": 13,
+    "exact_duplicates_removed": 0,
+    "modeling_records": 583,
+    "features": [
+      "age",
+      "gender",
+      "total_bilirubin",
+      "direct_bilirubin",
+      "alkphos",
+      "sgpt",
+      "sgot",
+      "total_proteins",
+      "albumin",
+      "ag_ratio"
+    ],
+    "feature_types": {
+      "age": "int64",
+      "gender": "object",
+      "total_bilirubin": "float64",
+      "direct_bilirubin": "float64",
+      "alkphos": "int64",
+      "sgpt": "int64",
+      "sgot": "int64",
+      "total_proteins": "float64",
+      "albumin": "float64",
+      "ag_ratio": "float64"
+    },
+    "missing_by_feature": {
+      "age": 0,
+      "gender": 0,
+      "total_bilirubin": 0,
+      "direct_bilirubin": 0,
+      "alkphos": 0,
+      "sgpt": 0,
+      "sgot": 0,
+      "total_proteins": 0,
+      "albumin": 0,
+      "ag_ratio": 4
+    },
+    "target_counts": {
+      "0": 167,
+      "1": 416
+    },
+    "outlier_iqr_counts": {
+      "age": 0,
+      "total_bilirubin": 84,
+      "direct_bilirubin": 81,
+      "alkphos": 69,
+      "sgpt": 73,
+      "sgot": 66,
+      "total_proteins": 8,
+      "albumin": 0,
+      "ag_ratio": 10
+    },
+    "train_records": 466,
+    "test_records": 117
+  },
+  "eda": {
+    "shape": [
+      583,
+      10
+    ],
+    "dtypes": {
+      "age": "int64",
+      "gender": "object",
+      "total_bilirubin": "float64",
+      "direct_bilirubin": "float64",
+      "alkphos": "int64",
+      "sgpt": "int64",
+      "sgot": "int64",
+      "total_proteins": "float64",
+      "albumin": "float64",
+      "ag_ratio": "float64"
+    },
+    "describe": {
+      "age": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 44.74614065180103,
+        "std": 16.18983330469438,
+        "min": 4.0,
+        "25%": 33.0,
+        "50%": 45.0,
+        "75%": 58.0,
+        "max": 90.0
+      },
+      "gender": {
+        "count": 583,
+        "unique": 2,
+        "top": "Male",
+        "freq": 441,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "25%": null,
+        "50%": null,
+        "75%": null,
+        "max": null
+      },
+      "total_bilirubin": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 3.298799313893653,
+        "std": 6.209521726180149,
+        "min": 0.4,
+        "25%": 0.8,
+        "50%": 1.0,
+        "75%": 2.6,
+        "max": 75.0
+      },
+      "direct_bilirubin": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 1.486106346483705,
+        "std": 2.8084976176589644,
+        "min": 0.1,
+        "25%": 0.2,
+        "50%": 0.3,
+        "75%": 1.3,
+        "max": 19.7
+      },
+      "alkphos": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 290.57632933104634,
+        "std": 242.93798917934396,
+        "min": 63.0,
+        "25%": 175.5,
+        "50%": 208.0,
+        "75%": 298.0,
+        "max": 2110.0
+      },
+      "sgpt": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 80.71355060034305,
+        "std": 182.62035603420242,
+        "min": 10.0,
+        "25%": 23.0,
+        "50%": 35.0,
+        "75%": 60.5,
+        "max": 2000.0
+      },
+      "sgot": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 109.91080617495712,
+        "std": 288.9185290517341,
+        "min": 10.0,
+        "25%": 25.0,
+        "50%": 42.0,
+        "75%": 87.0,
+        "max": 4929.0
+      },
+      "total_proteins": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 6.483190394511149,
+        "std": 1.0854514840234657,
+        "min": 2.7,
+        "25%": 5.8,
+        "50%": 6.6,
+        "75%": 7.2,
+        "max": 9.6
+      },
+      "albumin": {
+        "count": 583.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 3.141852487135506,
+        "std": 0.7955188059640255,
+        "min": 0.9,
+        "25%": 2.6,
+        "50%": 3.1,
+        "75%": 3.8,
+        "max": 5.5
+      },
+      "ag_ratio": {
+        "count": 579.0,
+        "unique": null,
+        "top": null,
+        "freq": null,
+        "mean": 0.9470639032815197,
+        "std": 0.3195921076723706,
+        "min": 0.3,
+        "25%": 0.7,
+        "50%": 0.93,
+        "75%": 1.1,
+        "max": 2.8
+      }
+    },
+    "target_counts": {
+      "0": 167,
+      "1": 416
+    },
+    "missing_counts": {
+      "age": 0,
+      "gender": 0,
+      "total_bilirubin": 0,
+      "direct_bilirubin": 0,
+      "alkphos": 0,
+      "sgpt": 0,
+      "sgot": 0,
+      "total_proteins": 0,
+      "albumin": 0,
+      "ag_ratio": 4
+    },
+    "class_imbalance_ratio": 2.4910179640718564
+  },
+  "holdout_metrics": {
+    "accuracy": 0.717948717948718,
+    "precision": 0.7339449541284404,
+    "recall_sensitivity": 0.9523809523809523,
+    "specificity": 0.12121212121212122,
+    "f1": 0.8290155440414507,
+    "roc_auc": 0.7316017316017316,
+    "average_precision": 0.8883275066811379,
+    "brier_score": 0.17704898658846271,
+    "confusion_matrix": [
+      [
+        4,
+        29
+      ],
+      [
+        4,
+        80
+      ]
+    ],
+    "classification_report": {
+      "0": {
+        "precision": 0.5,
+        "recall": 0.12121212121212122,
+        "f1-score": 0.1951219512195122,
+        "support": 33.0
+      },
+      "1": {
+        "precision": 0.7339449541284404,
+        "recall": 0.9523809523809523,
+        "f1-score": 0.8290155440414507,
+        "support": 84.0
+      },
+      "accuracy": 0.717948717948718,
+      "macro avg": {
+        "precision": 0.6169724770642202,
+        "recall": 0.5367965367965368,
+        "f1-score": 0.5120687476304815,
+        "support": 117.0
+      },
+      "weighted avg": {
+        "precision": 0.6679604798870854,
+        "recall": 0.717948717948718,
+        "f1-score": 0.6502250435019296,
+        "support": 117.0
+      }
+    }
+  },
+  "shap_summary": {
+    "status": "generated",
+    "explained_holdout_rows": 24,
+    "mean_absolute_contributions": [
+      {
+        "feature": "direct_bilirubin",
+        "mean_absolute_shap": 0.04220949709460851
+      },
+      {
+        "feature": "total_bilirubin",
+        "mean_absolute_shap": 0.0336643257412855
+      },
+      {
+        "feature": "sgpt",
+        "mean_absolute_shap": 0.03312091149036877
+      },
+      {
+        "feature": "alkphos",
+        "mean_absolute_shap": 0.032851451210650286
+      },
+      {
+        "feature": "albumin",
+        "mean_absolute_shap": 0.027262093462245448
+      },
+      {
+        "feature": "age",
+        "mean_absolute_shap": 0.02684302245459033
+      },
+      {
+        "feature": "sgot",
+        "mean_absolute_shap": 0.02104318953276389
+      },
+      {
+        "feature": "total_proteins",
+        "mean_absolute_shap": 0.020528034760940887
+      },
+      {
+        "feature": "ag_ratio",
+        "mean_absolute_shap": 0.0074739850255320555
+      },
+      {
+        "feature": "gender",
+        "mean_absolute_shap": 0.005407312925667644
+      }
+    ]
+  },
+  "model_comparison": [
+    {
+      "model": "Support Vector Machine",
+      "cv_recall_sensitivity": 0.9427408412483039,
+      "cv_precision": 0.7334973594082725,
+      "cv_f1": 0.8245675732658654,
+      "cv_roc_auc": 0.7316361729297053,
+      "test_accuracy": 0.717948717948718,
+      "test_precision": 0.7339449541284404,
+      "test_recall_sensitivity": 0.9523809523809523,
+      "test_specificity": 0.12121212121212122,
+      "test_f1": 0.8290155440414507,
+      "test_roc_auc": 0.7316017316017316,
+      "test_average_precision": 0.8883275066811379,
+      "test_brier_score": 0.17704898658846271,
+      "test_confusion_matrix": [
+        [
+          4,
+          29
+        ],
+        [
+          4,
+          80
+        ]
+      ],
+      "best_parameters": {
+        "model__estimator__C": 2.0,
+        "model__estimator__kernel": "rbf"
+      }
+    },
+    {
+      "model": "K-Nearest Neighbors",
+      "cv_recall_sensitivity": 0.8556309362279512,
+      "cv_precision": 0.7503925927271186,
+      "cv_f1": 0.7986278277078398,
+      "cv_roc_auc": 0.6734920321984998,
+      "test_accuracy": 0.6581196581196581,
+      "test_precision": 0.72,
+      "test_recall_sensitivity": 0.8571428571428571,
+      "test_specificity": 0.15151515151515152,
+      "test_f1": 0.782608695652174,
+      "test_roc_auc": 0.6341991341991342,
+      "test_average_precision": 0.8266060316900654,
+      "test_brier_score": 0.19806456170092535,
+      "test_confusion_matrix": [
+        [
+          5,
+          28
+        ],
+        [
+          12,
+          72
+        ]
+      ],
+      "best_parameters": {
+        "model__n_neighbors": 11,
+        "model__weights": "uniform"
+      }
+    },
+    {
+      "model": "Random Forest",
+      "cv_recall_sensitivity": 0.8526458616010855,
+      "cv_precision": 0.7451783939845557,
+      "cv_f1": 0.7946217723994105,
+      "cv_roc_auc": 0.7334670212779665,
+      "test_accuracy": 0.6752136752136753,
+      "test_precision": 0.7446808510638298,
+      "test_recall_sensitivity": 0.8333333333333334,
+      "test_specificity": 0.2727272727272727,
+      "test_f1": 0.7865168539325843,
+      "test_roc_auc": 0.6477272727272727,
+      "test_average_precision": 0.8405557085951999,
+      "test_brier_score": 0.20217891737891738,
+      "test_confusion_matrix": [
+        [
+          9,
+          24
+        ],
+        [
+          14,
+          70
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 1,
+        "model__n_estimators": 150
+      }
+    },
+    {
+      "model": "Decision Tree",
+      "cv_recall_sensitivity": 0.7680235187697875,
+      "cv_precision": 0.7728757955535831,
+      "cv_f1": 0.7699553656865883,
+      "cv_roc_auc": 0.6041726101427594,
+      "test_accuracy": 0.5811965811965812,
+      "test_precision": 0.7333333333333333,
+      "test_recall_sensitivity": 0.6547619047619048,
+      "test_specificity": 0.3939393939393939,
+      "test_f1": 0.6918238993710691,
+      "test_roc_auc": 0.5108225108225108,
+      "test_average_precision": 0.7278962867198161,
+      "test_brier_score": 0.3988491836057936,
+      "test_confusion_matrix": [
+        [
+          13,
+          20
+        ],
+        [
+          29,
+          55
+        ]
+      ],
+      "best_parameters": {
+        "model__max_depth": null,
+        "model__min_samples_leaf": 2
+      }
+    },
+    {
+      "model": "XGBoost",
+      "cv_recall_sensitivity": 0.675033921302578,
+      "cv_precision": 0.8125278911463644,
+      "cv_f1": 0.7332577637259312,
+      "cv_roc_auc": 0.7146644400375743,
+      "test_accuracy": 0.6068376068376068,
+      "test_precision": 0.7638888888888888,
+      "test_recall_sensitivity": 0.6547619047619048,
+      "test_specificity": 0.48484848484848486,
+      "test_f1": 0.7051282051282052,
+      "test_roc_auc": 0.6457431457431458,
+      "test_average_precision": 0.8477684174344806,
+      "test_brier_score": 0.23791517317295074,
+      "test_confusion_matrix": [
+        [
+          16,
+          17
+        ],
+        [
+          29,
+          55
+        ]
+      ],
+      "best_parameters": {
+        "model__learning_rate": 0.1,
+        "model__max_depth": 3,
+        "model__n_estimators": 100
+      }
+    },
+    {
+      "model": "Logistic Regression",
+      "cv_recall_sensitivity": 0.5724106739032113,
+      "cv_precision": 0.8787100857039297,
+      "cv_f1": 0.6904360279525665,
+      "cv_roc_auc": 0.7547860284178692,
+      "test_accuracy": 0.5726495726495726,
+      "test_precision": 0.84,
+      "test_recall_sensitivity": 0.5,
+      "test_specificity": 0.7575757575757576,
+      "test_f1": 0.6268656716417911,
+      "test_roc_auc": 0.6919191919191919,
+      "test_average_precision": 0.866347002158613,
+      "test_brier_score": 0.23636191032937787,
+      "test_confusion_matrix": [
+        [
+          25,
+          8
+        ],
+        [
+          42,
+          42
+        ]
+      ],
+      "best_parameters": {
+        "model__C": 10.0
+      }
+    }
+  ],
+  "model_version": "liver-v1.0.0"
+}

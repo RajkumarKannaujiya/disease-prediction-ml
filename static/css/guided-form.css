@@ -1,0 +1,127 @@
+.form-intro {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  color: #294e53;
+  background: #edf6f2;
+  border: 1px solid #cfe2dc;
+  border-radius: 8px;
+}
+
+.form-intro-icon {
+  display: grid;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  background: #176c71;
+  border-radius: 50%;
+}
+
+.form-intro p {
+  margin: 4px 0 0;
+  color: #50666c;
+  font-size: .88rem;
+}
+
+.completion-wrap {
+  margin: 0 0 22px;
+}
+
+.completion-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: #64757b;
+  font-size: .78rem;
+}
+
+.completion-copy strong {
+  color: #183b50;
+}
+
+.completion-track {
+  height: 7px;
+  overflow: hidden;
+  background: #e7eeeb;
+  border-radius: 99px;
+}
+
+.completion-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: #176c71;
+  border-radius: inherit;
+  transition: width .18s ease;
+}
+
+.field-wrap {
+  padding: 14px;
+  background: #fbfcfb;
+  border: 1px solid #e5ebe7;
+  border-radius: 7px;
+}
+
+.field-wrap.is-unknown {
+  background: #f4f7f6;
+}
+
+.field-wrap .form-control:disabled,
+.field-wrap .form-select:disabled {
+  color: #728087;
+  background: #edf0ef;
+}
+
+.unknown-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.unknown-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: #176c71;
+}
+
+.unknown-option label {
+  color: #536771;
+  font-size: .79rem;
+  cursor: pointer;
+}
+
+.form-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.privacy-callout {
+  padding: 12px;
+  background: #fff;
+  border-left: 3px solid #176c71;
+  border-radius: 3px;
+}
+
+.prediction-form button:disabled {
+  cursor: wait;
+  opacity: .8;
+}
+
+@media (max-width: 560px) {
+  .form-action-buttons {
+    justify-content: stretch;
+  }
+
+  .form-action-buttons .btn {
+    flex: 1 1 100%;
+  }
+}
